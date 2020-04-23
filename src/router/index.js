@@ -15,7 +15,8 @@ export default new Router({
         {path: '/home', component: ()=>import('../page/home/home')},
         {path: '/login', component: ()=>import('../page/login/login')},
         {path: '/forget', component: ()=>import('../page/forget/forget')},
-        {path: '/city/:cityId',component: ()=>import('../page/city/city')}
+        {path: '/city/:cityId',component: ()=>import('../page/city/city')},
+        {path: '/msite/:geohash/:address',name:"msite",component: ()=>import('../page/msite/msite')}
       ]
     }
   ]

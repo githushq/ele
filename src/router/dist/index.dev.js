@@ -50,6 +50,21 @@ var _default = new _vueRouter["default"]({
           return _interopRequireWildcard(require('../page/forget/forget'));
         });
       }
+    }, {
+      path: '/city/:cityId',
+      component: function component() {
+        return Promise.resolve().then(function () {
+          return _interopRequireWildcard(require('../page/city/city'));
+        });
+      }
+    }, {
+      path: '/msite/:geohash/:address',
+      name: "msite",
+      component: function component() {
+        return Promise.resolve().then(function () {
+          return _interopRequireWildcard(require('../page/msite/msite'));
+        });
+      }
     }]
   }]
 });

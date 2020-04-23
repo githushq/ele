@@ -2,6 +2,7 @@
     <header id="header">
         <!-- 小图标 -->
         <slot name="logo"></slot>
+        <slot name = "search"></slot>
         <!-- 箭头 -->
         <section class="head_goback" v-if="goback" @click="$router.go(-1)">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" versio="1.1">
@@ -17,6 +18,7 @@
         <section class="title_head ellipsis" v-if="headTitle">
             <span class="title_text">{{headTitle}}</span>
         </section>
+        <slot name="msite-title"></slot>
     </header>
 </template>
 <script>

@@ -28,18 +28,14 @@ export const groupcity = () => axios.get('/v1/cities?type=group');
  * 获取当前所在城市
  */
 
-export const currentcity = number => axios('/v1/cities/' + number);
+export const currentcity = number => axios.get(`/v1/cities/${number}`);
 
 
 /**
  * 获取搜索地址
  */
 
-export const searchplace = (cityid, value) => axios('/v1/pois', {
- type: 'search',
- city_id: cityid,
- keyword: value
-});
+export const searchplace = (cityid, value) => axios.get(`/v1/pois?type=search&city_id=${cityid}&keyword=${value}`);
 
 
 /**
@@ -53,11 +49,7 @@ export const msiteAddress = geohash => axios('/v2/pois/' + geohash);
  * 获取msite页面食品分类列表
  */
 
-export const msiteFoodTypes = geohash => axios('/v2/index_entry', {
- geohash,
- group_type: '1',
- 'flags[]': 'F'
-});
+export const msiteFoodTypes = geohash => axios(`/v2/index_entry?geohash=${geohash}&group_tpe=1&flages[]=f`);
 
 
 /**

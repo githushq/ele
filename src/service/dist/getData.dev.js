@@ -26,9 +26,7 @@ var cityGuess = function cityGuess() {
 exports.cityGuess = cityGuess;
 
 var hotcity = function hotcity() {
-  return (0, _axios3["default"])('/v1/cities', {
-    type: 'hot'
-  });
+  return _axios3["default"].get('/v1/cities?type=hot');
 };
 /**
  * 获取首页所有城市
@@ -38,9 +36,7 @@ var hotcity = function hotcity() {
 exports.hotcity = hotcity;
 
 var groupcity = function groupcity() {
-  return (0, _axios3["default"])('/v1/cities', {
-    type: 'group'
-  });
+  return _axios3["default"].get('/v1/cities?type=group');
 };
 /**
  * 获取当前所在城市
@@ -50,7 +46,7 @@ var groupcity = function groupcity() {
 exports.groupcity = groupcity;
 
 var currentcity = function currentcity(number) {
-  return (0, _axios3["default"])('/v1/cities/' + number);
+  return _axios3["default"].get("/v1/cities/".concat(number));
 };
 /**
  * 获取搜索地址
@@ -60,11 +56,7 @@ var currentcity = function currentcity(number) {
 exports.currentcity = currentcity;
 
 var searchplace = function searchplace(cityid, value) {
-  return (0, _axios3["default"])('/v1/pois', {
-    type: 'search',
-    city_id: cityid,
-    keyword: value
-  });
+  return _axios3["default"].get("/v1/pois?type=search&city_id=".concat(cityid, "&keyword=").concat(value));
 };
 /**
  * 获取msite页面地址信息
@@ -84,11 +76,7 @@ var msiteAddress = function msiteAddress(geohash) {
 exports.msiteAddress = msiteAddress;
 
 var msiteFoodTypes = function msiteFoodTypes(geohash) {
-  return (0, _axios3["default"])('/v2/index_entry', {
-    geohash: geohash,
-    group_type: '1',
-    'flags[]': 'F'
-  });
+  return (0, _axios3["default"])("/v2/index_entry?geohash=".concat(geohash, "&group_tpe=1&flages[]=f"));
 };
 /**
  * 获取msite商铺列表
