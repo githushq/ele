@@ -66,7 +66,7 @@ var searchplace = function searchplace(cityid, value) {
 exports.searchplace = searchplace;
 
 var msiteAddress = function msiteAddress(geohash) {
-  return (0, _axios3["default"])('/v2/pois/' + geohash);
+  return _axios3["default"].get("/v2/pois/".concat(geohash));
 };
 /**
  * 获取msite页面食品分类列表

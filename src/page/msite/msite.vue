@@ -26,6 +26,14 @@
                 <div class="swiper-pagination"></div>
             </div>
         </nav>
+        <div class="shop_list_container">
+            <header class="shop_header">
+                <svg class="shop_icon">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#shop"></use>
+                </svg>
+                <span class="shop_header_title">附近商家</span>
+            </header>
+        </div>
     </div>
 </template>
 <script>
@@ -33,6 +41,7 @@ import headTop from '../../components/header/head'
 import {msiteAddress,msiteFoodTypes,cityGuess} from "../../service/getData";
 import  Swiper from 'swiper' 
 import '../../style/swiper.min.css'
+import {mapMutations} from 'vuex'
 export default {
     data(){
         return{
@@ -65,11 +74,21 @@ export default {
             })
         })
     },
-    beforeMount(){
-        this.geohash = this.$route.params.geohash
-        this.misteTitle = this.$route.params.address
+    methods:{
+        ...mapMutations(['RECORD_ADDRESS','SAVE_GEOHASH'])
+    },
+   async beforeMount(){
+        let params = this.$route.params
+        this.geohash = params.geohash
+        let res = await msiteAddress(this.geohash)
+        // 保存geohash到vuex
+        this.SAVE_GEOHASH(this.geohash)
+        this.misteTitle = params.address
+        // 保存经纬度到vuex
+        this.RECORD_ADDRESS(res.data)
         
     },
+
     components:{
         headTop
     }
@@ -100,7 +119,7 @@ export default {
         border-bottom:  0.025rem solid @bc;
         height: 10.6rem;
         .swiper-container{
-            // .wh(100%,auto);
+            .wh(100%,auto);
             padding-bottom: 0.6rem;
             .swiper-pagination{
                 bottom: -0.2rem;
@@ -127,5 +146,24 @@ export default {
                 }
             
         }
+    }
+    .shop_list_container{
+        margin-top: .4rem;
+        border-top: 0.025rem solid @bc;
+        background-color: #fff;
+        .shop_header{
+            .shop_icon{
+                fill: #999;
+                margin-left:  0.6rem;
+                vertical-align: middle;
+                .wh(.6rem,.6rem)
+            }
+            .shop_header_title{
+                color: #999;
+                font-size: 0.55rem;
+                line-height: 1.6rem;
+            }
+        }
+
     }
 </style>

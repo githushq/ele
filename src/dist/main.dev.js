@@ -6,6 +6,8 @@ var _App = _interopRequireDefault(require("./App"));
 
 var _router = _interopRequireDefault(require("./router"));
 
+var _store = _interopRequireDefault(require("./store"));
+
 require("./style/common.less");
 
 require("./config/rem");
@@ -25,6 +27,7 @@ _vue["default"].use(_axios["default"]);
 new _vue["default"]({
   el: '#app',
   router: _router["default"],
+  store: _store["default"],
   components: {
     App: _App["default"]
   },

@@ -42,7 +42,7 @@ export const searchplace = (cityid, value) => axios.get(`/v1/pois?type=search&ci
  * 获取msite页面地址信息
  */
 
-export const msiteAddress = geohash => axios('/v2/pois/' + geohash);
+export const msiteAddress = geohash => axios.get(`/v2/pois/${geohash}`);
 
 
 /**
