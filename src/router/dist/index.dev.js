@@ -65,6 +65,14 @@ var _default = new _vueRouter["default"]({
           return _interopRequireWildcard(require('../page/msite/msite'));
         });
       }
+    }, {
+      path: '/shop',
+      name: 'shop',
+      component: function component() {
+        return Promise.resolve().then(function () {
+          return _interopRequireWildcard(require('../page/shop/shop'));
+        });
+      }
     }]
   }]
 });

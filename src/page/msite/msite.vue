@@ -33,11 +33,14 @@
                 </svg>
                 <span class="shop_header_title">附近商家</span>
             </header>
+              <shop-list :geohash="geohash"></shop-list>
         </div>
+        <foot-guide></foot-guide>
     </div>
 </template>
 <script>
 import headTop from '../../components/header/head'
+import shopList from '../../components/common/shoplist'
 import {msiteAddress,msiteFoodTypes,cityGuess} from "../../service/getData";
 import  Swiper from 'swiper' 
 import '../../style/swiper.min.css'
@@ -90,7 +93,8 @@ export default {
     },
 
     components:{
-        headTop
+        headTop,
+        shopList
     }
 }
 </script>

@@ -10,6 +10,10 @@ import axios from './config/axios'
 Vue.config.productionTip = false
 Vue.use(axios)
 
+import { loadMore } from './components/common/mixin';
+ 
+Vue.directive('load-more', { bind: loadMore });
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

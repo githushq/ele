@@ -109,7 +109,14 @@ var shopList = function shopList(latitude, longitude, offset) {
     order_by: order_by,
     'delivery_mode[]': delivery_mode + supportStr
   };
-  return (0, _axios3["default"])('/shopping/restaurants', data);
+  var url = '/shopping/restaurants?';
+
+  for (var key in data) {
+    url = url + key + '=' + data[key] + '&';
+  }
+
+  url = url.substring(0, url.length - 1);
+  return _axios3["default"].get(url);
 };
 /**
  * 获取search页面搜索结果

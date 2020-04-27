@@ -75,7 +75,12 @@ export const shopList = (latitude, longitude, offset, restaurant_category_id = '
   order_by,
   'delivery_mode[]': delivery_mode + supportStr
  };
- return axios('/shopping/restaurants', data);
+  let url = '/shopping/restaurants?'
+  for (const key in data) {
+     url =  url + key + '=' +data[key]+ '&'
+  }
+  url = url.substring(0,url.length-1)
+ return axios.get(url);
 };
 
 

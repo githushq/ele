@@ -9,65 +9,30 @@ var _mUtils = require("../../config/mUtils");
 
 var loadMore = {
   directives: {
+    //自定义指令: 下拉加
+    // const throttle = function (fn, gapTime) {
+    //     let _lastTime = null;
+    //     return function () {
+    //         let _nowTime = + new Date()
+    //         if (_nowTime - _lastTime > gapTime || !_lastTime) {
+    //             fn();
+    //             _lastTime = _nowTime
+    //         }
+    //     }
+    // }
     'load-more': {
       bind: function bind(el, binding) {
-        var windowHeight = window.screen.height;
-        var height;
-        var setTop;
-        var paddingBottom;
-        var marginBottom;
-        var requestFram;
-        var oldScrollTop;
-        var scrollEl;
-        var heightEl;
-        var scrollType = el.attributes.type && el.attributes.type.value;
-        var scrollReduce = 2;
+        addEventListener('scroll', function () {
+          var scrollTop = document.documentElement.scrollTop; //body 卷出去的高度
 
-        if (scrollType == 2) {
-          scrollEl = el;
-          heightEl = el.children[0];
-        } else {
-          scrollEl = document.body;
-          heightEl = el;
-        }
+          var scrollHeight = document.body.scrollHeight; // 内容高度
 
-        el.addEventListener('touchstart', function () {
-          height = heightEl.clientHeight;
+          var num = scrollTop + window.innerHeight >= scrollHeight - 20;
 
-          if (scrollType == 2) {
-            height = height;
-          }
-
-          setTop = el.offsetTop;
-          paddingBottom = (0, _mUtils.getStyle)(el, 'paddingBottom');
-          marginBottom = (0, _mUtils.getStyle)(el, 'marginBottom');
-        }, false);
-        el.addEventListener('touchmove', function () {
-          loadMore();
-        }, false);
-        el.addEventListener('touchend', function () {
-          oldScrollTop = scrollEl.scrollTop;
-          moveEnd();
-        }, false);
-
-        var moveEnd = function moveEnd() {
-          requestFram = requestAnimationFrame(function () {
-            if (scrollEl.scrollTop != oldScrollTop) {
-              oldScrollTop = scrollEl.scrollTop;
-              moveEnd();
-            } else {
-              cancelAnimationFrame(requestFram);
-              height = heightEl.clientHeight;
-              loadMore();
-            }
-          });
-        };
-
-        var loadMore = function loadMore() {
-          if (scrollEl.scrollTop + windowHeight >= height + setTop + paddingBottom + marginBottom - scrollReduce) {
+          if (scrollTop + window.innerHeight >= scrollHeight - 45) {
             binding.value();
           }
-        };
+        });
       }
     }
   }

@@ -2,6 +2,7 @@
     <header id="header">
         <!-- 小图标 -->
         <slot name="logo"></slot>
+        <!-- 搜索 -->
         <slot name = "search"></slot>
         <!-- 箭头 -->
         <section class="head_goback" v-if="goback" @click="$router.go(-1)">
