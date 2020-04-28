@@ -130,10 +130,7 @@ export const foodDelivery = (latitude, longitude) => axios('opping71/restaur
     * 获取shop页面商铺详情
     */
    
-   export const shopDetails = (shopid, latitude, longitude) => axios('opping/restaurant/' + shopid, {
-    latitude,
-    longitude: longitude + '&extras[]=activities&extras[]=album&extras[]=license&extras[]=identification&extras[]=statistics'
-   });
+   export const shopDetails = (shopid, latitude, longitude) => axios(`/shopping/restaurant/${shopid}?latitude=${latitude}&longitude=${longitude}&extras[]=activities&extras[]=album&extras[]=license&extras[]=identification&extras[]=statistics`);
    
    
    
@@ -141,9 +138,7 @@ export const foodDelivery = (latitude, longitude) => axios('opping71/restaur
     * 获取shop页面菜单列表
     */
    
-   export const foodMenu = restaurant_id => axios('opping72/menu', {
-    restaurant_id
-   });
+   export const foodMenu = restaurant_id => axios(`/shopping/v2/menu?restaurant_id=${restaurant_id}`);
    
    
    /**

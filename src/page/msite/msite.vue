@@ -45,6 +45,7 @@ import {msiteAddress,msiteFoodTypes,cityGuess} from "../../service/getData";
 import  Swiper from 'swiper' 
 import '../../style/swiper.min.css'
 import {mapMutations} from 'vuex'
+import footGuide from "../../components/foot/footGuide";
 export default {
     data(){
         return{
@@ -94,7 +95,8 @@ export default {
 
     components:{
         headTop,
-        shopList
+        shopList,
+        footGuide
     }
 }
 </script>
