@@ -88,8 +88,9 @@ var _default = (_RECORD_ADDRESS$RECOR = {}, _defineProperty(_RECORD_ADDRESS$RECO
 
       (0, _mUtils.setStore)('buyCart', state.cartList);
     } else {
-      //商品数量为0，则清空当前商品的信息
-      item[food_id] = null;
+      alert(99); //商品数量为0，则清空当前商品的信息
+
+      item[food_id] = null; //  console.log(state.cartLIST);
     }
   }
 }), _defineProperty(_RECORD_ADDRESS$RECOR, _mutationTypes.INIT_BUYCART, function (state) {

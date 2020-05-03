@@ -3,7 +3,7 @@
          <head-top goback="true" :head-title="cityName">
          
          </head-top>
-         <form class="city_form" v-on:submit.prevent>
+         <form class="city_form" v-on:submit.prevent ref="cityFrom">
             <div>
                 <input type="search" name="city" placeholder="输入学校、商务楼、地址" class='city_input input_style' require v-model="cityAddress">            
             </div>
@@ -35,7 +35,7 @@ export default {
             placeHistory: [], // 历史搜索记录
             placelist:[],
             historyTitle: true,
-            cityAddress: null, // 搜索地址
+            // cityAddress: null, // 搜索地址
             placeNone: false, // 搜索无结果，显示提示组件
         }
     },
@@ -43,7 +43,9 @@ export default {
         currentcity(this.cityId).then(res=>{
             this.cityName = res.data.name
         })
-        this.initData()
+        this.initData();
+        
+        
     },
     methods:{
         postpois(){

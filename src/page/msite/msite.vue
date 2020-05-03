@@ -58,8 +58,6 @@ export default {
     },
     mounted(){
         msiteFoodTypes().then(res=>{
-        
-            
             let resLength = res.data.length;
             let resArr = [...res.data]; // 返回一个新的数组
             let foodArr = []
@@ -67,7 +65,7 @@ export default {
                 foodArr[j] = resArr.splice(0,8)
             }
             this.foodTypes = foodArr
-            console.log(this.foodTypes);
+            // console.log(this.foodTypes);
             
         }).then(()=>{
             new Swiper('.swiper-container',{
@@ -85,7 +83,6 @@ export default {
         let params = this.$route.params
         this.geohash = params.geohash
         let res = await msiteAddress(this.geohash)
-        // 保存geohash到vuex
         this.SAVE_GEOHASH(this.geohash)
         this.misteTitle = params.address
         // 保存经纬度到vuex

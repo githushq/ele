@@ -97,14 +97,17 @@ import {
      let category = (shop[category_id] || {});
      let item = (category[item_id] || {});
      if (item && item[food_id]) {
+       
       if (item[food_id]['num'] > 0) {
        item[food_id]['num']--;
        state.cartList = {...cart};
        //存入localStorage
        setStore('buyCart', state.cartList);
       } else {
+        alert(99)
        //商品数量为0，则清空当前商品的信息
        item[food_id] = null;
+      //  console.log(state.cartLIST);
       }
      }
     },

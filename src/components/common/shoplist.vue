@@ -88,7 +88,8 @@ export default {
   },
   methods: {
     async initData() {
-      alert(this.geohash)
+      // alert(this.geohash)
+        alert(this.offset)
         let res = await shopList(this.latitude,this.longitude,this.offset,this.restaurantCategoryId)
         // this.preventRepeatReupest = false;
         // console.log(res.data);
@@ -97,6 +98,7 @@ export default {
 
     },
     async loaderMore() {
+        alert('gundong')
         if (this.touchend) return;
         if (this.preventRepeatReupest) return;
         this.preventRepeatReupest = true;
@@ -104,10 +106,7 @@ export default {
         let res = await  shopList(this.latitude,this.longitude,this.offset,this.restaurantCategoryId)
         console.log(res.data);
         this.shopListArr = [...this.shopListArr,...res.data]
-        //  if(res.data.length < 20){
-        //     this.touchend = true;
-        //     return;
-        // }
+        
         this.preventRepeatReupest = false;
     
     },
